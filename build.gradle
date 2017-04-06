@@ -1,0 +1,34 @@
+group 'TwoDataSource'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+jar {
+    baseName = 'TwoDataSource'
+    version = '0.0.1'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+buildscript {
+    repositories {
+        jcenter()
+        maven { url "http://repo.spring.io/libs-snapshot" }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+    }
+}
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-redis', version: '1.4.2.RELEASE'
+    compile("com.alibaba:fastjson:1.2.12")
+    runtime('mysql:mysql-connector-java')
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
